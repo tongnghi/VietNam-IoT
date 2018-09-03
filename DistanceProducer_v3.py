@@ -6,8 +6,7 @@ from kafka import KafkaProducer, KafkaConsumer
 # defind pin on Raspberry
 
 
-triggerPin = 4
-echoPin = 18
+
 def dokhoangcach(triggerPin, echoPin):
 
     GPIO.setmode(GPIO.BCM)
@@ -34,8 +33,7 @@ def dokhoangcach(triggerPin, echoPin):
 
 
 class Producer(multiprocessing.Process):
-        triggerPin = 4
-        echoPin = 18
+    
         msg = "THONG TIN TU HE THONG CANH BAO BANG SONG SIEU AM"
 
         def __init__(self):
@@ -92,8 +90,8 @@ def main():
 
     for t in tasks:
         distance = dokhoangcach(4,18)
-        t.msg = "Sound sensor............."
-        t.msg = str(distance) 
+        t.msg = "Khoang cach: "
+        t.msg = t.msg + str(distance) 
         t.start()
     time.sleep(10000)
     print "Sleep 1s..."
